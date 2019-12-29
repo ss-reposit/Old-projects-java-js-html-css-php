@@ -1,0 +1,132 @@
+html{
+	height:150%;
+}
+ body{
+	margin:0;
+	width:100%;
+	height:100%;
+}
+#title{
+	text-align:center;
+	font-size:10vmin;
+	color: hsl(150,0%,40%);
+	height:7.5%;
+	background-color:white;
+}
+nav{
+	position:sticky;
+	top:0;
+	height:4%;
+	z-index:1;
+}
+.navbar_element{
+	color: rgb(255,255,255);
+	background-color:hsl(150,0%,40%);
+	text-align:center;
+	font-size:3vmin;
+	width:20%;
+	height:100%;
+	float:left;
+	text-decoration:none;
+	box-shadow:0 2px 3px #888888;
+	position:relative;
+}
+.navbar_element:hover{
+	background-color:#444;
+}
+#current_location_bar{
+	float:left;
+	background-color:#f2f2f2;
+	width:15%;
+	height:55%;
+	box-shadow: 2px 2px 3px #888888;
+	position:sticky;
+	top:0;
+	z-index:-1;
+}
+.card_display{
+	float:right;
+	margin-top:0;
+	width: 80%;
+	height:37.5%;
+	position:relative;
+}
+.vote_card{
+	float:left;
+	width: 27%;
+	height: 95%;
+	margin-left:3%;
+	position: relative;
+	top:5%;
+	z-index:0;
+	background-color: #f2f2f2;
+	box-shadow: 2px 2px 3px #888888;
+	box-sizing:border-box;
+	padding:2.5%;
+
+}
+.vote_card_content{
+	height:100%;
+	width:100%;
+}
+.vote_card_content img{
+	-webkit-backface-visibility: hidden; /*deals with image "shake bug" on opacity change with hover using transition in chrome*/
+	width:100%;
+	height:100%;
+	opacity:0.5;
+	transition: 0.25s ease-in-out;
+}
+.vote_card_content:hover img{
+	opacity:1;
+	cursor:pointer;
+}
+.p_top_name{
+	margin:0;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	text-align:center;
+	padding-top:10%;
+	font-size:3vmin;
+	overflow:hidden;
+	background-color:white;
+	opacity:0.5;
+	display:none;
+}
+.p_bottom_description{
+	margin:0;
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	text-align:center;
+	padding-bottom:10%;
+	font-size:3vmin;
+	overflow:hidden;
+	background-color:white;
+	opacity:0.5;
+	display:none;
+}
+.vote_card_content:hover .p_top_name {
+	display:block;
+}
+.vote_card_content:hover .p_bottom_description{
+	display:block;
+}
+#footer{
+	background-color:#444;
+	height:12%;
+	position:relative;
+	top:76.4%;
+}
+#footnote{
+	text-align: center;
+	padding-top: 2vmin;
+	font-size:2vmin;
+	white-space: nowrap;
+	position: 0;
+	
+}	
+
+
