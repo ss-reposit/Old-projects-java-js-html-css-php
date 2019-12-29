@@ -13,11 +13,11 @@ public class Config {
 	private int inputStage = 1;
 	private boolean readCode = false;
 
-	private final String INPUT_FILE_NAME = "C:\\path\\GAMEConfig\config_simulation.txt";
+	private final String INPUT_FILE_NAME = "C:\\path\\config_simulation.txt";
 	File input;
 	Scanner in;
 
-	private final String CODE_FILE_NAME = "C:\\path\\GAMEConfig\\codeFile.txt";
+	private final String CODE_FILE_NAME = "C:\\path\\codeFile.txt";
 	FileWriter fw;
 	BufferedWriter bw;
 
