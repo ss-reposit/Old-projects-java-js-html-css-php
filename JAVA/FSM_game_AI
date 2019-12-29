@@ -1,2 +1,10 @@
-A small game using a FSM for the AI, download and run all dependincies included. 
-Might have to change name of images etc to your appropritate folder
+A small game using a FSM for the AI, download and run, all dependincies included. 
+
+To run properly download all dependencies.
+change file name strings in the files Bot.java, Config.java, Missile.java, Player.java. i.e change "path". 
+
+The config file allows some configuration of the game, forexample changing the size and background. 
+# is a line comment
+*# *# is a block comment. 
+
+Config.java also provides some error checking of the config file. (read the config file for more info)
