@@ -1,0 +1,17 @@
+#set frame size (int,int) 
+#int > 0
+
+500 500
+#Set background color
+#CANNOT be null ("")
+#Supported Colors:
+#BLACK
+#WHITE
+#LIGHT_GRAY
+
+BLACK
+*#
+a
+b
+v
+*#
