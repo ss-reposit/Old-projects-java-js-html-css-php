@@ -1,0 +1,5 @@
+Small scale image based discussion forum! Unfortunatly, this page is statically hosted and as a result does not have the dynamic elements	available.
+For example the original project allowed users to create accounts, post content (including images) and vote based on what they liked. 
+The website was dynamically (locally) hosted and implemented the LAMP stack runing on the Oracle virtual machine. 
+
+This project was done from scratch, front end and backend.
