@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Conway's Game of Life
+		</title>
+		
+		<style type="text/css">
+			
+			td{
+				width: 4vw;
+				height: 4vh;
+				border-color: #000;
+				border-width: 1px;
+				border:solid;
+			}
+		</style>
+	</head>
+		<body>
+			<script type="text/javaScript">
+				var hz = 20;
+				var s_1 = 1/hz*1000;
+				var board = new Array(20).fill().map(_ => new Array(20).fill(0)); //map actually creates a new array on each undefined element.
+				initTable(board);
+				
+
+				board[9][10] = 1;
+				board[9][11] = 1;
+				board[9][12] = 1;
+				board[8][12] = 1;
+				board[7][11] = 1;
+				
+				runLoop(board);
+				
+				//10 hz refrate ==> call every 100ms
+				//30 hz => 34 ms
+				function runLoop(board){
+					
+					printBoard(board);
+					calcConway(board);
+					setTimeout(runLoop, s_1, board);
+				}
+				
+				function calcConway(board){
+					var changeArray = [];
+					for(var i = 0; i < board.length;i++){
+						for(var j = 0; j < board[0].length;j++){
+							var neigh_cell = calcNeighbour(board, i, j);
+							if(neigh_cell)console.log(i + " " + j + " : count: " + neigh_cell);
+							/*Conway Logic*/
+							<!-- 1:Any live cell with fewer than two live neighbours dies, as if by underpopulation. -->
+							<!-- 2: Any live cell with two or three live neighbours lives on to the next generation. -->
+							<!-- 3: Any live cell with more than three live neighbours dies, as if by overpopulation. -->
+							<!-- 4: Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. -->
+							
+							if(board[i][j] == 1){
+								if(neigh_cell < 2){ //1
+									changeArray.push(i);
+									changeArray.push(j);
+								}
+								else if(neigh_cell > 3){ //3
+									changeArray.push(i);
+									changeArray.push(j);
+								}
+								continue; //2
+							}
+							else{
+								if(neigh_cell == 3){
+									changeArray.push(i);
+									changeArray.push(j); //4
+								}
+							}
+						}
+					}
+					invertValues(board, changeArray);
+				}
+				
+				function invertValues(board, changeArray){
+					try{
+						for(var k = changeArray.length -1; k > 0; k-=2){
+							var j = changeArray.pop();
+							var i = changeArray.pop();
+							console.log(i + ":" + j);
+							if(!board[i][j]){
+								board[i][j] = 1;
+							}else{
+								board[i][j] = 0;
+							}
+						}
+					}catch(e){
+						console.log(e); //if no changes made
+						console.log("no changes made");
+					}
+				}
+				
+				function calcNeighbour(board, i , j){
+					var count = 0;
+					for(var k = -1; k <= 1; k++){
+						for(var h = -1; h <= 1;h++){
+							if(k || h){ //if 0, 0 dont count
+								var cell_x = i +k;
+								var cell_y = j +h;
+								<!-- console.log("i:j::" + i +":" + j + "cx:cy::" + cell_x + ":" + cell_y); -->
+								if(cell_x >= 0 && cell_x < board.length && cell_y >= 0 && cell_y < board[0].length){
+									<!-- console.log("in bounds"); -->
+									if(board[cell_x][cell_y] == 1){
+										count++;
+										<!-- console.log("++"); -->
+									}
+								}
+							}
+						}	
+					}
+					return count;
+				}
+				
+				function initTable(array){
+					var table  = document.createElement("div");
+					table.id = "output";
+					for(var i = 0; i < array.length;i++){
+						var t_row = document.createElement("tr"); //need this so that it looks like a table
+						t_row.id = "row" + i;
+						for(var j = 0; j < array[0].length;j++){
+							var t_elem = document.createElement("td"); //dito
+							t_row.appendChild(t_elem);
+							t_elem.id = "col" + j;
+						}
+						table.appendChild(t_row);
+					}
+					document.body.appendChild(table);
+				}
+				
+				function printBoard(array){					
+					for(var i = 0; i < array.length;i++){
+						for(var j = 0; j < array[0].length;j++){
+							if(array[i][j] == 1){
+								document.getElementById("output").querySelector('#row' + i).querySelector('#col' + j).style.backgroundColor = "yellow";
+							}
+							else{
+								document.getElementById("output").querySelector('#row' + i).querySelector('#col' + j).style.backgroundColor = "grey";
+							}
+							document.getElementById("output").querySelector('#row' + i).querySelector('#col' + j).innerHTML = i + ":" + j;
+						}
+					}
+				}
+			</script>
+		</body>
+</html>
